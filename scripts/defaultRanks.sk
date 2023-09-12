@@ -1,0 +1,5 @@
+on join:
+	if "%groups of player%" does not contain "level_":
+		execute console command "lp user %player% parent add level_a"
+	if "%groups of player%" does not contain "prestige":
+		execute console command "lp user %player% parent add prestige0"

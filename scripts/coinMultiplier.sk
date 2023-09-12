@@ -1,0 +1,114 @@
+options:
+	15cost: 2000
+	30cost: 4000
+	45cost: 6000
+	60cost: 8000
+	
+command /checkmultiplier <offlineplayer>:
+	permission: wirednetwork.checkmultiplier
+	permission message: &cYou don't have permission to use this command.
+	trigger:
+		send "%arg-1% has a multiplier of %{multiplier::%arg-1's uuid%}%x"
+
+command /checkmultipliertime <offlineplayer>:
+	permission: wirednetwork.checkmultipliertime
+	permission message: &cYou don't have permission to use this command.
+	trigger:
+		send "%arg-1% has %{2xmultipliertime::%arg-1's uuid%}% minutes left on their multiplier"
+
+command /setmultipliertime <offlineplayer> <number>:
+	permission: wirednetwork.setmultipliertime
+	permission message: &cYou don't have permission to use this command.
+	trigger:
+		set {2xmultipliertime::%arg-1's uuid%} to arg-2
+		send "%arg-1% now has %{2xmultipliertime::%arg-1's uuid%}% minutes left on their multiplier"
+
+command /buymultiplier <number>:
+	permission: wirednetwork.buymultiplier
+	permission message: &cYou don't have permission to use this command.
+	executable by: player
+	trigger:	
+		if player can hold 1 diamond sword:
+			if arg-1 is 15:
+				if {tokens::%player's uuid%} >= {@15cost}:
+					give player sunflower named "&r&6&l2x Coin Multiplier &r&3(Right Click)" with the lore "&r&6Lasts for 15 minutes"
+					remove {@15cost} from {tokens::%player's uuid%}
+				else:
+					send "&cYou don't have enough tokens for this!" to player
+			else if arg-1 is 30:
+				if {tokens::%player's uuid%} >= {@30cost}:
+					give player sunflower named "&r&6&l2x Coin Multiplier &r&3(Right Click)" with the lore "&r&6Lasts for 30 minutes"
+					remove {@30cost} from {tokens::%player's uuid%}
+				else:
+					send "&cYou don't have enough tokens for this!" to player
+			else if arg-1 is 45:
+				if {tokens::%player's uuid%} >= {@45cost}:
+					give player sunflower named "&r&6&l2x Coin Multiplier &r&3(Right Click)" with the lore "&r&6Lasts for 45 minutes"
+					remove {@45cost} from {tokens::%player's uuid%}
+				else:
+					send "&cYou don't have enough tokens for this!" to player
+			else if arg-1 is 60:
+				if {tokens::%player's uuid%} >= {@60cost}:
+					give player sunflower named "&r&6&l2x Coin Multiplier &r&3(Right Click)" with the lore "&r&6Lasts for 60 minutes"
+					remove {@60cost} from {tokens::%player's uuid%}
+				else:
+					send "&cYou don't have enough tokens for this!" to player
+			else:
+				send "&cChoose either 15, 30, 45 or 60." to player
+		else:
+			send "&cYour inventory is full!"
+			
+on rightclick with sunflower:
+	if event-item's name contains "2x Coin Multiplier":
+		if groups of player contains "prestige1" or "prestige2" or "prestige3":
+			send "&cDue to a bug, if you have prestiged, you cannot use 2x Coin Multipliers"
+			stop
+		set {_l::*} to split line 1 of lore of item at "for " 
+		if {_l::2} is set:
+			set {_t::*} to {_l::2} split at " minutes"
+			send "&r[&r&6&lWired&r&3Gens&r] %{_t::1}% minutes was added to your 2x coin multiplier!" to player
+			send "%player% redeemed a 2x coin multiplier for %{_t::1}% minutes" to console
+			remove 1 of tool from tool
+			add {_t::1} parsed as number to {2xmultipliertime::%player's uuid%}
+			
+every 1 second:
+	loop all players:
+		add 1 to {multiplierlastchecked::%loop-player's uuid%}
+		if {multiplierlastchecked::%loop-player's uuid%} >= 60:
+			if {2xmultipliertime::%loop-player's uuid%} > 0:
+				set {multiplierlastchecked::%loop-player's uuid%} to 0
+				remove 1 from {2xmultipliertime::%loop-player's uuid%}
+		if {2xmultipliertime::%loop-player's uuid%} > 0:
+			set {multiplier::%loop-player's uuid%} to 2
+			if groups of loop-player contains "diamond":
+				add 0.1 to {multiplier::%loop-player's uuid%}
+			else if groups of loop-player contains "netherite":
+				add 0.25 to {multiplier::%loop-player's uuid%}
+			if groups of loop-player contains "prestige1":
+				add 1.5 to {multiplier::%loop-player's uuid%}
+			else if groups of loop-player contains "prestige2":
+				add 3 to {multiplier::%loop-player's uuid%}
+			else if groups of loop-player contains "prestige3":
+				add 4.5 to {multiplier::%loop-player's uuid%}
+		else:
+			set {multiplier::%loop-player's uuid%} to 1
+			if groups of loop-player contains "diamond":
+				add 0.1 to {multiplier::%loop-player's uuid%}
+			else if groups of loop-player contains "netherite":
+				add 0.25 to {multiplier::%loop-player's uuid%}
+			if groups of loop-player contains "prestige1":
+				add 1.5 to {multiplier::%loop-player's uuid%}
+			else if groups of loop-player contains "prestige2":
+				add 3 to {multiplier::%loop-player's uuid%}
+			else if groups of loop-player contains "prestige3":
+				add 4.5 to {multiplier::%loop-player's uuid%}
+				
+function getMultiplierCost(t: number) :: number:
+	if {_t} is 15:
+		return {@15cost}
+	else if {_t} is 30:
+		return {@30cost}
+	else if {_t} is 45:
+		return {@45cost}
+	else if {_t} is 60:
+		return {@60cost}

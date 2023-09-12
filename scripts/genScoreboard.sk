@@ -1,0 +1,27 @@
+function updateScoreboard(p: player):
+	#check if the player isn't in the parkour world
+	clear {_p}'s scoreboard
+	set title of {_p}'s scoreboard to "&6&lWired&r&3Gens"
+	set line 11 of {_p}'s scoreboard to "  &8&m-----------------"
+	set line 10 of {_p}'s scoreboard to "&6&l%{_p}%"
+	set line 9 of {_p}'s scoreboard to " &bBalance:&f %balance of {_p}%"
+	set line 8 of {_p}'s scoreboard to " &bMultiplier:&f %{multiplier::%{_p}'s uuid%}%x"
+	set line 7 of {_p}'s scoreboard to " &bGen slots:&f %{generator::max::%{_p}'s uuid%}%/%{generator::maximumGens::%{_p}'s uuid%}%"
+	set line 6 of {_p}'s scoreboard to " &bTokens:&f %{tokens::%{_p}'s uuid%}%"
+	set line 5 of {_p}'s scoreboard to " "
+	set line 4 of {_p}'s scoreboard to "&6&lServer" 
+	set line 3 of {_p}'s scoreboard to " &bTotal Players: &f%size of all offline players%"
+	set line 2 of {_p}'s scoreboard to " &bItems Sold:&f %{globalItemsSold}%"
+	set line 1 of {_p}'s scoreboard to "  &8&m-----------------"
+
+every 2 second:
+	loop all players:
+		if "%loop-player's world%" is not "witp":
+			updateScoreboard(loop-player)
+		
+command /reloadscoreboard:
+	permission: wirednetwork.reloadscoreboard
+	permission message: &cYou don't have permission to use this command.
+	trigger:
+		updateScoreboard(player)
+		send "Your scoreboard was reloaded" to player

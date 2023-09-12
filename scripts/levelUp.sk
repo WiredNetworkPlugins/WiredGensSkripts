@@ -1,0 +1,254 @@
+options:
+	sound: UI_TOAST_CHALLENGE_COMPLETE
+	b_cost: 100
+	c_cost: 200
+	d_cost: 400
+	e_cost: 800
+	f_cost: 1600
+	g_cost: 3200
+	h_cost: 6400
+	i_cost: 12800
+	j_cost: 25600
+	k_cost: 51200
+	l_cost: 102400
+	m_cost: 204800
+	n_cost: 409600
+	o_cost: 819200
+	p_cost: 1638400
+	q_cost: 3276800
+	r_cost: 6553600
+	s_cost: 13107200
+	t_cost: 26214400
+	u_cost: 52428800
+	v_cost: 104857600
+	w_cost: 209715200
+	x_cost: 419430400
+	y_cost: 838860800
+	z_cost: 1677721600
+	prestige1cost: 2000000000
+	prestige2cost: 4000000000
+	prestige3cost: 8000000000
+
+command /levelup:
+	permission: wirednetwork.levelup
+	permission message: &cYou don't have permission to use this command
+	trigger:
+		if groups of player contains "level_a":
+			if player's balance >= {@b_cost}:
+				remove {@b_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to B!" to player
+			else:
+				send "&cYou need ${@b_cost}" to player
+		else if groups of player contains "level_b":
+			if player's balance >= {@c_cost}:
+				remove {@c_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to C!" to player
+			else:
+				send "&cYou need ${@c_cost}" to player
+		else if groups of player contains "level_c":
+			if player's balance >= {@d_cost}:
+				remove {@d_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to D!" to player
+			else:
+				send "&cYou need ${@d_cost}" to player
+		else if groups of player contains "level_d":
+			if player's balance >= {@e_cost}:
+				remove {@e_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to E!" to player
+			else:
+				send "&cYou need ${@e_cost}" to player
+		else if groups of player contains "level_e":
+			if player's balance >= {@f_cost}:
+				remove {@f_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to F!" to player
+			else:
+				send "&cYou need ${@f_cost}" to player
+		else if groups of player contains "level_f":
+			if player's balance >= {@g_cost}:
+				remove {@g_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to G!" to player
+			else:
+				send "&cYou need ${@g_cost}" to player
+		else if groups of player contains "level_g":
+			if player's balance >= {@h_cost}:
+				remove {@h_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to H!" to player
+			else:
+				send "&cYou need ${@h_cost}" to player
+		else if groups of player contains "level_h":
+			if player's balance >= {@i_cost}:
+				remove {@i_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to I!" to player
+			else:
+				send "&cYou need ${@i_cost}" to player
+		else if groups of player contains "level_i":
+			if player's balance >= {@j_cost}:
+				remove {@j_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to J!" to player
+			else:
+				send "&cYou need ${@j_cost}" to player
+		else if groups of player contains "level_j":
+			if player's balance >= {@k_cost}:
+				remove {@k_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to K!" to player
+			else:
+				send "&cYou need ${@k_cost}" to player
+		else if groups of player contains "level_k":
+			if player's balance >= {@l_cost}:
+				remove {@l_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to L!" to player
+			else:
+				send "&cYou need ${@l_cost}" to player
+		else if groups of player contains "level_l":
+			if player's balance >= {@m_cost}:
+				remove {@m_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to M!" to player
+			else:
+				send "&cYou need ${@m_cost}" to player
+		else if groups of player contains "level_m":
+			if player's balance >= {@n_cost}:
+				remove {@n_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to N!" to player
+			else:
+				send "&cYou need ${@n_cost}" to player
+		else if groups of player contains "level_n":
+			if player's balance >= {@o_cost}:
+				remove {@o_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to O!" to player
+			else:
+				send "&cYou need ${@o_cost}" to player
+		else if groups of player contains "level_o":
+			if player's balance >= {@p_cost}:
+				remove {@p_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to P!" to player
+			else:
+				send "&cYou need ${@p_cost}" to player
+		else if groups of player contains "level_p":
+			if player's balance >= {@q_cost}:
+				remove {@q_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to Q!" to player
+			else:
+				send "&cYou need ${@q_cost}" to player
+		else if groups of player contains "level_q":
+			if player's balance >= {@r_cost}:
+				remove {@r_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to R!" to player
+			else:
+				send "&cYou need ${@r_cost}" to player
+		else if groups of player contains "level_r":
+			if player's balance >= {@s_cost}:
+				remove {@s_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to S!" to player
+			else:
+				send "&cYou need ${@s_cost}" to player
+		else if groups of player contains "level_s":
+			if player's balance >= {@t_cost}:
+				remove {@t_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to T!" to player
+			else:
+				send "&cYou need ${@t_cost}" to player
+		else if groups of player contains "level_t":
+			if player's balance >= {@u_cost}:
+				remove {@u_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to U!" to player
+			else:
+				send "&cYou need ${@u_cost}" to player
+		else if groups of player contains "level_u":
+			if player's balance >= {@v_cost}:
+				remove {@v_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to V!" to player
+			else:
+				send "&cYou need ${@v_cost}" to player
+		else if groups of player contains "level_v":
+			if player's balance >= {@w_cost}:
+				remove {@w_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to W!" to player
+			else:
+				send "&cYou need ${@w_cost}" to player
+		else if groups of player contains "level_w":
+			if player's balance >= {@x_cost}:
+				remove {@x_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to X!" to player
+			else:
+				send "&cYou need ${@x_cost}" to player
+		else if groups of player contains "level_x":
+			if player's balance >= {@y_cost}:
+				remove {@y_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to Y!" to player
+			else:
+				send "&cYou need ${@y_cost}" to player
+		else if groups of player contains "level_y":
+			if player's balance >= {@z_cost}:
+				remove {@z_cost} from player's balance
+				execute console command "lp user %player% promote levels"
+				send "&aYou leveled up to Z!" to player
+			else:
+				send "&cYou need ${@z_cost}" to player
+		else if groups of player contains "level_z":
+			send "&6You've reached the maximum level! Use /prestige to go back to level A and get a permanent multiplier boost."
+
+command /prestige:
+	permission: wirednetwork.prestige
+	permission message: &cYou don't have permission to use this command
+	trigger:
+		if groups of player contains "level_z" and "prestige0":
+			if player's balance >= {@prestige1cost}:
+				execute console command "lp user %player% parent remove level_z"
+				execute console command "lp user %player% promote prestiges"
+				execute console command "lp user %player% parent add level_a"
+				broadcast "&7--------------------------"
+				broadcast "&a%player% has just unlocked Prestige 1!"
+				broadcast "&7--------------------------"
+				play sound "{@sound}" with volume 1 to all players
+			else:
+				send "&cYou need ${@prestige1cost} to do this."
+		else if groups of player contains "level_z" and "prestige1":
+			if player's balance >= {@prestige2cost}:
+				execute console command "lp user %player% parent remove level_z"
+				execute console command "lp user %player% promote prestiges"
+				execute console command "lp user %player% parent add level_a"
+				broadcast "&7--------------------------"
+				broadcast "&a%player% has just unlocked Prestige 2!"
+				broadcast "&7--------------------------"
+				play sound "{@sound}" with volume 1 to all players
+			else:
+				send "&cYou need ${@prestige2cost} to do this."
+		else if groups of player contains "level_z" and "prestige2":
+			if player's balance >= {@prestige3cost}:
+				execute console command "lp user %player% parent remove level_z"
+				execute console command "lp user %player% promote prestiges"
+				execute console command "lp user %player% parent add level_a"
+				broadcast "&7--------------------------"
+				broadcast "&a%player% has just unlocked Prestige 3!"
+				broadcast "&7--------------------------"
+				play sound "{@sound}" with volume 1 to all players
+			else:
+				send "&cYou need ${@prestige3cost} to do this."
+		else if groups of player contains "prestige3":
+			send "&6You've reached the maximum prestige!" to player
+		else:
+			send "&cYou need to reach Level Z first!"

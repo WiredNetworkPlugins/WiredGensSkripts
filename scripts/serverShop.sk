@@ -1,0 +1,50 @@
+command /servershop:
+	permission: wirednetwork.servershop
+	permission message: &cYou don't have permission to run this command.
+	executable by: players
+	trigger:
+		shopGUI(player)
+
+function shopGUI(p: player):
+	set {_genSlotCost} to getSlotCost({_p})
+	set {_sellwandCost} to getSellwandCost()
+	set {_15multiplierCost} to getMultiplierCost(15)
+	set {_30multiplierCost} to getMultiplierCost(30)
+	set {_45multiplierCost} to getMultiplierCost(45)
+	set {_60multiplierCost} to getMultiplierCost(60)
+
+	set {_gui} to chest inventory with 6 rows named "WiredGens Shop"
+
+	set slot (integers between 0 and 54) of {_gui} to gray stained glass pane named " "
+	set slot 10 of {_gui} to white stained glass named "&rGenerators"
+	set slot 12 of {_gui} to command block named "&rGen Slot (&a%{_genSlotCost}% tokens&r)"
+	set slot 14 of {_gui} to blaze rod named "&rSellwand (&a%{_sellwandCost}% tokens&r)"
+	set slot 16 of {_gui} to paper named "&rRanks"
+	set slot 28 of {_gui} to sunflower named "&r15 Minute 2x Coin Multiplier (&a%{_15multiplierCost}% tokens&r)"
+	set slot 30 of {_gui} to sunflower named "&r30 Minute 2x Coin Multiplier (&a%{_30multiplierCost}% tokens&r)"
+	set slot 32 of {_gui} to sunflower named "&r45 Minute 2x Coin Multiplier (&a%{_45multiplierCost}% tokens&r)"
+	set slot 34 of {_gui} to sunflower named "&r60 Minute 2x Coin Multiplier (&a%{_60multiplierCost}% tokens&r)"
+	open {_gui} to {_p}
+
+on inventory click:
+	name of event-inventory is "WiredGens Shop"
+	cancel event
+	event-inventory is not player's inventory
+	if clicked slot is 10:
+		genShop(player)
+	if clicked slot is 12:
+		make player execute command "/buygenslots"
+		shopGUI(player)
+	if clicked slot is 14:
+		make player execute command "/buysellwand"
+	if clicked slot is 16:
+		close player's inventory
+		make player execute command "/ranks"
+	if clicked slot is 28:
+		make player execute command "/buymultiplier 15"
+	if clicked slot is 30:
+		make player execute command "/buymultiplier 30"
+	if clicked slot is 32:
+		make player execute command "/buymultiplier 45"
+	if clicked slot is 34:
+		make player execute command "/buymultiplier 60"

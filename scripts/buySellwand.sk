@@ -1,0 +1,17 @@
+options:
+	cost: 1000
+
+command /buysellwand:
+    permission: wirednetwork.buysellwand
+    description: Buy a sell wand
+    executable by: players
+    trigger:
+        if {tokens::%player's uuid%} >= {@cost}:
+            remove {@cost} from {tokens::%player's uuid%}
+            giveSellWand(player)
+            message "&aSuccess!"
+        else:
+            message "&cYou do not have enough tokens! Sell wands cost 1000 tokens each!"
+
+function getSellwandCost() :: string:
+	return "{@cost}"

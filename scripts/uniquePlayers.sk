@@ -1,0 +1,5 @@
+command /uniqueplayers:
+	permission: wirednetwork.uniqueplayers
+	permission message: &cYou don't have permission to use this command.
+	trigger:
+		send "%size of all offline players%"

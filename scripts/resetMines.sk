@@ -1,0 +1,6 @@
+command /resetmines:
+	permission: wirednetwork.resetmines
+	permission message: &cYou don't have permission to use this command.
+	trigger:
+		execute console command "/mrl reset token_main"
+		execute console command "/mrl reset token_op"

@@ -1,0 +1,29 @@
+options:
+	sound: ENTITY_EXPERIENCE_ORB_PICKUP
+
+on break:
+	if "%region at player%" contains "main_mine_area" or "op_mine_area":
+		if event-block is coal_ore:
+			cancel drops
+			execute console command "/tokens give %player% 2"
+			play sound "{@sound}" with volume 1 to player
+		else if event-block is iron_ore:
+			cancel drops
+			execute console command "/tokens give %player% 4"
+			play sound "{@sound}" with volume 1 to player
+		else if event-block is gold_ore:
+			cancel drops
+			execute console command "/tokens give %player% 8"
+			play sound "{@sound}" with volume 1 to player
+		else if event-block is diamond_ore:
+			cancel drops
+			execute console command "/tokens give %player% 16"
+			play sound "{@sound}" with volume 1 to player
+		else if event-block is emerald_ore:
+			cancel drops
+			execute console command "/tokens give %player% 32"
+			play sound "{@sound}" with volume 1 to player
+		else if event-block is ancient_debris:
+			cancel drops
+			execute console command "/tokens give %player% 128"
+			play sound "{@sound}" with volume 1 to player

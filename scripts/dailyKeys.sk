@@ -1,0 +1,6 @@
+command /daily:
+	permission: wirednetwork.dailykeys
+	executable by: players
+	cooldown: 1 day
+	trigger:
+		execute console command "crate key give %player% daily 1"

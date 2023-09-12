@@ -1,0 +1,11 @@
+command /tokenleaderboard:
+	permission: wirednetwork.tokentop
+	permission message: &cYou don't have permission to use this command.
+	trigger:
+		set {_top::*} to sorted indices of {tokens::*} in descending order
+		loop 10 times:
+			add {_top::%loop-value%} to {_top_10::*}
+		send "&6&lToken Leaderboard"
+		loop {_top_10::*}:
+			add 1 to {_n}
+			send "&6&l%{_n}% &7- &3%{_top_10::%{_n}%} parsed as offlineplayer% &7- &2%{tokens::%{_top_10::%{_n}%}%}% "

@@ -1,0 +1,10 @@
+command /timer <integer>:
+   permission: wirednetwork.timer
+   trigger:
+      set {_countdown} to arg 1
+      wait 1 tick
+      broadcast "&6&lWired&r&3Gens &r>> %{_countdown}%"
+      loop arg 1 times:
+         remove 1 from {_countdown}
+         wait 1 second
+         broadcast "&6&lWired&r&3Gens &r>> %{_countdown}%"

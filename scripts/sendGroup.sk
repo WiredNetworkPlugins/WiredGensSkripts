@@ -1,0 +1,8 @@
+command /playergrouptest <offlineplayer>:
+	permission: wirednetwork.playergrouptest
+	trigger:
+		send "%groups of arg-1%" to player
+		if groups of arg-1 contains "level_a":
+			send "yes" to player
+		else:
+			send "no" to player

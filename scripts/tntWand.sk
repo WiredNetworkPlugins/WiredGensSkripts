@@ -1,0 +1,18 @@
+command /tntwand:
+  permission: wirednetwork.tntwand
+  executable by: players
+  trigger:
+    give tnt named "&cTNT Wand" to player
+
+
+
+
+on right click with tnt:
+  if name of tool of player is "&cTNT Wand":
+    spawn a primed tnt 1 meter above the player
+    push the spawned entity in direction of player at speed 0.9
+    push the spawned entity upwards at speed 0.2
+	
+on place of tnt:
+  if name of tool of player is "&cTNT Wand":
+    cancel event

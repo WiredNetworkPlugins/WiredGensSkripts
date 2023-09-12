@@ -1,0 +1,9 @@
+command /checkgenslots <offlineplayer>:
+	permission: wirednetwork.checkgenslots
+	trigger:
+		send "%arg-1% has %{generator::maximumGens::%arg-1's uuid%}% gen slots." to player
+		
+command /checkusedgenslots <offlineplayer>:
+	permission: wirednetwork.checkusedgenslots
+	trigger:
+		send "%arg-1% has used %{generator::max::%arg-1's uuid%}% gen slots." to player

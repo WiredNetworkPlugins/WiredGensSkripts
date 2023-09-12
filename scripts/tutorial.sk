@@ -1,0 +1,6 @@
+command /tutorial:
+  aliases: /guide
+  description: Get help.
+  permission: wirednetwork.genhelp
+  trigger:
+    send "Welcome to &6&lWired&r&3Gens&r! To play type /start! Place down your generator (or gen) and it will start to generate items, pick up these and type /sell. This will give you money. You can use your money in /shop, /servershop and by upgrading your gens (Right-Clicking on your gens)."

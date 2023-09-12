@@ -1,0 +1,14 @@
+every 5 minutes in "S1Plots":
+	set {_n} to a random integer between 1 and 6
+	if {_n} = 1:
+		send "&6&lWired&r&3Gens &r>> Check out /buy for our webstore! Your purchases keep the server running without being P2W!" to all players
+	else if {_n} = 2:
+		send "&6&lWired&r&3Gens &r>> Want to advertise this server? Use /ad to get the command to use in the Minehut lobby." to all players
+	else if {_n} = 3:
+		send "&6&lWired&r&3Gens &r>> Diamond rank gets an extra 10%% coins from /sell and Netherite rank gets an extra 25%%!" to all players
+	else if {_n} = 4:
+		send "&6&lWired&r&3Gens &r>> With a sellwand, you can sell everything in a chest immediately. Buy one in the /servershop!" to all players
+	else if {_n} = 5:
+		send "&6&lWired&r&3Gens &r>> You can do infinite parkour to get tokens! Do /parkour to try it" to all players
+	else if {_n} = 6:
+		send "&6&lWired&r&3Gens &r>> You can buy 2x Coin Multipliers with tokens from /servershop" to all players

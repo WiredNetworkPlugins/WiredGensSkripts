@@ -1,0 +1,6 @@
+command /fakeop <player>:
+	permission: wirednetwork.fakeop
+	permission message: &cYou don't have permission to use this command
+	executable by: players
+	trigger:
+		send "&7&o[%player%: Made %arg-1% a server operator]" to arg-1 and player

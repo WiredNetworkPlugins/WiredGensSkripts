@@ -1,0 +1,8 @@
+command /ads:
+	aliases: /ad, /advertise, /advertisements, /advertisement
+	trigger:
+		send ""
+		send "<tooltip:&aClick to receive the advertisement!><suggest command:/ad wiredgens WiredGens is back! Gens PVP, Infinite Parkour, Mining>&aClick to receive the &2Default &aadvertisement!<reset>"
+		send ""
+		send "<tooltip:&aClick to receive the advertisement!><suggest command:/ad wiredgens &6Wired&3Gens is back! &2Gens &cPVP &9Infinite Parkour &6Mining>&aClick to receive the &2VIP &aadvertisement!<reset>"
+		send ""

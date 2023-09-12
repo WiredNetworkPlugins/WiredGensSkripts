@@ -1,0 +1,4 @@
+on place:
+	if line 1 of lore of player's tool contains "Generator Drop":
+		send "&cYou can't place generator drops!" to player
+		cancel event

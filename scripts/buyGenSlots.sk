@@ -1,0 +1,19 @@
+options:
+	multiplier: 1.1
+
+command /buyslots:
+	permission: wirednetwork.buyslot
+	description: Buy a generator slot
+	executable by: players
+	aliases: /buygenslots
+	trigger:
+		set {_totalcost} to round({@multiplier} * {generator::maximumGens::%player's uuid%})
+		if {tokens::%player's uuid%} >= {_totalcost}:
+			remove {_totalcost} from {tokens::%player's uuid%}
+			add 1 to {generator::maximumGens::%player's uuid%}
+			message "&aSuccess!"
+		else:
+			message "&cYou do not have enough tokens! Another generator slot costs %{_totalcost}% tokens!"
+
+function getSlotCost(p: player) :: number:
+	return round({@multiplier} * {generator::maximumGens::%{_p}'s uuid%})

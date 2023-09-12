@@ -1,0 +1,100 @@
+options:
+	tier1cost: 250
+	tier16cost: 10720
+	tier32cost: 232720
+	tier48cost: 1572720
+	tier64cost: 7372720
+
+command /buygen <string> <integer = 1>:
+	permission: wirednetwork.buygen
+	description: Buy a generator
+	executable by: players
+	trigger:
+		if arg-1 is "Tier1":
+			set {_totalcost} to {@tier1cost} * arg-2
+			if player's balance >= {_totalcost}:
+				remove {_totalcost} from player's balance
+				loop arg-2 times:
+					getGen("Tier1", player)
+				message "&aSuccess!"
+			else:
+				message "&cYou do not have enough money! Tier 1 gens cost ${@tier1cost} each!"
+		else if arg-1 is "Tier16":
+			set {_totalcost} to {@tier16cost} * arg-2
+			if player's balance >= {_totalcost}:
+				remove {_totalcost} from player's balance
+				loop arg-2 times:
+					getGen("Tier16", player)
+				message "&aSuccess!"
+			else:
+				message "&cYou do not have enough money! Tier 16 gens cost ${@tier16cost} each!"
+		else if arg-1 is "Tier32":
+			set {_totalcost} to {@tier32cost} * arg-2
+			if player's balance >= {_totalcost}:
+				remove {_totalcost} from player's balance
+				loop arg-2 times:
+					getGen("Tier32", player)
+				message "&aSuccess!"
+			else:
+				message "&cYou do not have enough money! Tier 32 gens cost ${@tier32cost} each!"
+		else if arg-1 is "Tier48":
+			set {_totalcost} to {@tier48cost} * arg-2
+			if player's balance >= {_totalcost}:
+				remove {_totalcost} from player's balance
+				loop arg-2 times:
+					getGen("Tier48", player)
+				message "&aSuccess!"
+			else:
+				message "&cYou do not have enough money! Tier 48 gens cost ${@tier48cost} each!"
+		else if arg-1 is "Tier64":
+			set {_totalcost} to {@tier64cost} * arg-2
+			if player's balance >= {_totalcost}:
+				remove {_totalcost} from player's balance
+				loop arg-2 times:
+					getGen("Tier64", player)
+				message "&aSuccess!"
+			else:
+				message "&cYou do not have enough money! Tier 64 gens cost ${@tier64cost} each!"
+function getGenCost(t: string) :: number:
+	if {_t} is "Tier1":
+		return {@tier1cost}
+	else if {_t} is "Tier16":
+		return {@tier16cost}
+	else if {_t} is "Tier32":
+		return {@tier32cost}
+	else if {_t} is "Tier48":
+		return {@tier48cost}
+	else if {_t} is "Tier64":
+		return {@tier64cost}
+
+function genShop(p: player):
+	set {_tier1GenCost} to getGenCost("Tier1")
+	set {_tier16GenCost} to getGenCost("Tier16")
+	set {_tier32GenCost} to getGenCost("Tier32")
+	set {_tier48GenCost} to getGenCost("Tier48")
+	set {_tier64GenCost} to getGenCost("Tier64")
+
+	set {_gui} to chest inventory with 5 rows named "WiredGens"
+
+	set slot (integers between 0 and 45) of {_gui} to gray stained glass pane
+	set slot 10 of {_gui} to white stained glass named "&rTier 1 Generator (&a$%{_tier1GenCost}%&r)"
+	set slot 12 of {_gui} to pink stained glass named "&rTier 16 Generator (&a$%{_tier16GenCost}%&r)"
+	set slot 14 of {_gui} to pink terracotta named "&rTier 32 Generator (&a$%{_tier32GenCost}%&r)"
+	set slot 16 of {_gui} to pink glazed terracotta named "&rTier 48 Generator (&a$%{_tier48GenCost}%&r)"
+	set slot 28 of {_gui} to pink wool named "&rTier 64 Generator (&a$%{_tier64GenCost}%&r)"
+	open {_gui} to {_p}
+
+on inventory click:
+	name of event-inventory is "WiredGens"
+	cancel event
+	event-inventory is not player's inventory
+	if clicked slot is 10:
+		execute player command "/buygen Tier1 1"
+	if clicked slot is 12:
+		execute player command "/buygen Tier16 1"
+	if clicked slot is 14:
+		execute player command "/buygen Tier32 1"
+	if clicked slot is 16:
+		execute player command "/buygen Tier48 1"
+	if clicked slot is 28:
+		execute player command "/buygen Tier64 1"

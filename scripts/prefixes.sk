@@ -1,0 +1,54 @@
+function prefixPermissionCheck(p: player, s: string) :: string:
+	if {_p} has permission "wirednetwork.prefixes.%{_s}%":
+		return "&aYou own this prefix!"
+	else:
+		return "&cYou do not have this prefix."
+
+function prefixGUI(p: player):
+	set {_playerHasSupporterPrefix} to prefixPermissionCheck({_p}, "supporter")
+	set {_playerHasEndermanPrefix} to prefixPermissionCheck({_p}, "enderman")
+	set {_playerHasMagmaCubePrefix} to prefixPermissionCheck({_p}, "magma_cube")
+	
+	set {_gui} to chest inventory with 6 rows named "WiredGens Prefixes"
+
+	set slot (integers between 0 and 54) of {_gui} to gray stained glass pane
+	set slot 0 of {_gui} to barrier named "&r&cDisable all prefixes" with the lore "", "Click to disable all your prefixes"
+	set slot 10 of {_gui} to gold ingot named "&r[<##fbe707>S<##fbdc0d>u<##fcd113>p<##fcc619>p<##fcbb1f>o<##fcaf25>r<##fda42b>t<##fd9931>e<##fd8e37>r&r] Prefix" with the lore "", "%{_playerHasSupporterPrefix}%"
+	set slot 11 of {_gui} to ender pearl named "&r[<##230331>E<##340a48>n<##44105f>d<##551776>e<##661e8d>r<##7725a4>m<##872bbb>a<##9832d2>n&r] Prefix" with the lore "", "%{_playerHasEndermanPrefix}%"
+	set slot 12 of {_gui} to magma cream named "&r[<##fb750c>M<##f26d11>a<##e96517>g<##df5d1c>m<##d65621>a <##cd4e26>C<##c4462c>u<##ba3e31>b<##b13636>e&r] Prefix" with the lore "", "%{_playerHasMagmaCubePrefix}%"
+	open {_gui} to {_p}
+
+on inventory click:
+	name of event-inventory is "WiredGens Prefixes"
+	cancel event
+	event-inventory is not player's inventory
+	if clicked slot is 0:
+		execute console command "lp user %player% parent remove supporter"
+		execute console command "lp user %player% parent remove enderman"
+		execute console command "lp user %player% parent remove magma_cube"
+	if clicked slot is 10:
+		if player has permission "wirednetwork.prefixes.supporter":
+			execute console command "lp user %player% parent add supporter"
+			execute console command "lp user %player% parent switchprimarygroup supporter"
+		else:
+			send "&cYou do not have this prefix! You can buy it on our webstore at /buy"
+	if clicked slot is 11:
+		if player has permission "wirednetwork.prefixes.enderman":
+			execute console command "lp user %player% parent add enderman"
+			execute console command "lp user %player% parent switchprimarygroup enderman"
+		else:
+			send "&cYou do not have this prefix! You can buy it on our webstore at /buy"
+	if clicked slot is 12:
+		if player has permission "wirednetwork.prefixes.magma_cube":
+			execute console command "lp user %player% parent add magma_cube"
+			execute console command "lp user %player% parent switchprimarygroup magma_cube"
+		else:
+			send "&cYou do not have this prefix! You can buy it on our webstore at /buy"
+		
+command /prefixes:
+	aliases: /prefix
+	permission: wirednetwork.prefixes
+	permission message: &cYou don't have permission to use this command.
+	executable by: players
+	trigger:
+		prefixGUI(player)

@@ -1,0 +1,30 @@
+command /ranktoken <text>:
+	description: get a rank token :)
+	permission: wirednetwork.ranktoken
+	trigger:
+		if arg-1 is "owner":
+			give paper of mending 1 named "&3&lOwner Rank Token &r&k|||" to player
+		else if arg-1 is "mod":
+			give paper of mending 1 named "&9Mod Rank Token &r&k|||" to player
+		else if arg-1 is "tester":
+			give paper of mending 1 named "&6&lTester Rank Token &r&k|||" to player
+		else if arg-1 is "coal":
+			give paper of mending 1 named "&8Coal Rank Token &r&k|||" to player
+		else if arg-1 is "iron":
+			give paper of mending 1 named "&fIron Rank Token &r&k|||" to player
+on right click with paper:
+	if name of tool of player is "&3&lOwner Rank Token &r&k|||":
+		remove 1 paper of mending 1 named "&3&lOwner Rank Token &r&k|||" from player's inventory
+		make console execute command "/lp user %player% parent set owner"
+	else if name of tool of player is "&9Mod Rank Token &r&k|||":
+		remove 1 paper of mending 1 named "&9Mod Rank Token &r&k|||" from player's inventory
+		make console execute command "/lp user %player% parent set mod"
+	else if name of tool of player is "&6&lTester Rank Token &r&k|||":
+		remove 1 paper of mending 1 named "&6&lTester Rank Token &r&k|||" from player's inventory
+		make console execute command "/lp user %player% parent set tester"
+	else if name of tool of player is "&8Coal Rank Token &r&k|||":
+		remove 1 paper of mending 1 named "&8Coal Rank Token &r&k|||" from player's inventory
+		make console execute command "/lp user %player% parent set coal"
+	else if name of tool of player is "&fIron Rank Token &r&k|||":
+		remove 1 paper of mending 1 named "&fIron Rank Token &r&k|||" from player's inventory
+		make console execute command "/lp user %player% parent set iron"

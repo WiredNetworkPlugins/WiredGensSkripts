@@ -1,0 +1,3 @@
+on break of yellow_glazed_terracotta:
+	cancel drops
+	make player execute command "/crate givekey %player% coin 1"

@@ -1,0 +1,169 @@
+# Requires:
+#
+# Plosk
+
+command /sell:
+	permission: wirednetwork.sell
+	permission message: &r&cYou don't have permission to use this command.
+	executable by: player
+	trigger:
+		sellItems(player's inventory, player)
+
+command /sellwand <player>:
+	permission: wirednetwork.sellwand
+	permission message: &r&cYou don't have permission to use this command.
+	trigger:
+		giveSellWand(player)
+
+function sellItems(i: inventory, p: player):
+	# Figure out how many of each drop the player has
+	set {_tier1} to amount of white stained glass pane named "Tier 1 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier2} to amount of light grey stained glass pane named "Tier 2 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier3} to amount of grey stained glass pane named "Tier 3 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier4} to amount of black stained glass pane named "Tier 4 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier5} to amount of brown stained glass pane named "Tier 5 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier6} to amount of red stained glass pane named "Tier 6 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier7} to amount of orange stained glass pane named "Tier 7 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier8} to amount of yellow stained glass pane named "Tier 8 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier9} to amount of lime stained glass pane named "Tier 9 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier10} to amount of green stained glass pane named "Tier 10 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier11} to amount of cyan stained glass pane named "Tier 11 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier12} to amount of light blue stained glass pane named "Tier 12 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier13} to amount of blue stained glass pane named "Tier 13 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier14} to amount of purple stained glass pane named "Tier 14 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier15} to amount of magenta stained glass pane named "Tier 15 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier16} to amount of pink stained glass pane named "Tier 16 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier17} to amount of white dye named "Tier 17 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier18} to amount of light grey dye named "Tier 18 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier19} to amount of grey dye named "Tier 19 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier20} to amount of black dye named "Tier 20 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier21} to amount of brown dye named "Tier 21 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier22} to amount of red dye named "Tier 22 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier23} to amount of orange dye named "Tier 23 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier24} to amount of yellow dye named "Tier 24 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier25} to amount of lime dye named "Tier 25 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier26} to amount of green dye named "Tier 26 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier27} to amount of cyan dye named "Tier 27 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier28} to amount of light blue dye named "Tier 28 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier29} to amount of blue dye named "Tier 29 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier30} to amount of purple dye named "Tier 30 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier31} to amount of magenta dye named "Tier 31 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier32} to amount of pink dye named "Tier 32 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier33} to amount of white candle named "Tier 33 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier34} to amount of light grey candle named "Tier 34 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier35} to amount of grey candle named "Tier 35 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier36} to amount of black candle named "Tier 36 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier37} to amount of brown candle named "Tier 37 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier38} to amount of red candle named "Tier 38 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier39} to amount of orange candle named "Tier 39 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier40} to amount of yellow candle named "Tier 40 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier41} to amount of lime candle named "Tier 41 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier42} to amount of green candle named "Tier 42 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier43} to amount of cyan candle named "Tier 43 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier44} to amount of light blue candle named "Tier 44 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier45} to amount of blue candle named "Tier 45 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier46} to amount of purple candle named "Tier 46 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier47} to amount of magenta candle named "Tier 47 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier48} to amount of pink candle named "Tier 48 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier49} to amount of white carpet named "Tier 49 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier50} to amount of light grey carpet named "Tier 50 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier51} to amount of grey carpet named "Tier 51 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier52} to amount of black carpet named "Tier 52 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier53} to amount of brown carpet named "Tier 53 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier54} to amount of red carpet named "Tier 54 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier55} to amount of orange carpet named "Tier 55 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier56} to amount of yellow carpet named "Tier 56 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier57} to amount of lime carpet named "Tier 57 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier58} to amount of green carpet named "Tier 58 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier59} to amount of cyan carpet named "Tier 59 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier60} to amount of light blue carpet named "Tier 60 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier61} to amount of blue carpet named "Tier 61 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier62} to amount of purple carpet named "Tier 62 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier63} to amount of magenta carpet named "Tier 63 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_tier64} to amount of pink carpet named "Tier 64 Drop" with lore "&r&6&lGenerator Drop" in {_i}
+	set {_ultimate} to amount of gold nugget named "&c&l&k|| &r&6&lUltimate Drop &r&c&l&k||" with lore "&r&6&lGenerator Drop" in {_i}
+	# Remove the items
+	remove {_tier1} of white stained glass pane named "Tier 1 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier2} of light grey stained glass pane named "Tier 2 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier3} of grey stained glass pane named "Tier 3 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier4} of black stained glass pane named "Tier 4 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier5} of brown stained glass pane named "Tier 5 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier6} of red stained glass pane named "Tier 6 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier7} of orange stained glass pane named "Tier 7 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier8} of yellow stained glass pane named "Tier 8 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier9} of lime stained glass pane named "Tier 9 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier10} of green stained glass pane named "Tier 10 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier11} of cyan stained glass pane named "Tier 11 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier12} of light blue stained glass pane named "Tier 12 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier13} of blue stained glass pane named "Tier 13 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier14} of purple stained glass pane named "Tier 14 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier15} of magenta stained glass pane named "Tier 15 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier16} of pink stained glass pane named "Tier 16 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier17} of white dye named "Tier 17 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier18} of light grey dye named "Tier 18 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier19} of grey dye named "Tier 19 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier20} of black dye named "Tier 20 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier21} of brown dye named "Tier 21 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier22} of red dye named "Tier 22 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier23} of orange dye named "Tier 23 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier24} of yellow dye named "Tier 24 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier25} of lime dye named "Tier 25 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier26} of green dye named "Tier 26 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier27} of cyan dye named "Tier 27 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier28} of light blue dye named "Tier 28 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier29} of blue dye named "Tier 29 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier30} of purple dye named "Tier 30 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier31} of magenta dye named "Tier 31 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier32} of pink dye named "Tier 32 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier33} of white candle named "Tier 33 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier34} of light grey candle named "Tier 34 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier35} of grey candle named "Tier 35 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier36} of black candle named "Tier 36 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier37} of brown candle named "Tier 37 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier38} of red candle named "Tier 38 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier39} of orange candle named "Tier 39 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier40} of yellow candle named "Tier 40 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier41} of lime candle named "Tier 41 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier42} of green candle named "Tier 42 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier43} of cyan candle named "Tier 43 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier44} of light blue candle named "Tier 44 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier45} of blue candle named "Tier 45 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier46} of purple candle named "Tier 46 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier47} of magenta candle named "Tier 47 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier48} of pink candle named "Tier 48 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier49} of white carpet named "Tier 49 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier50} of light grey carpet named "Tier 50 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier51} of grey carpet named "Tier 51 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier52} of black carpet named "Tier 52 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier53} of brown carpet named "Tier 53 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier54} of red carpet named "Tier 54 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier55} of orange carpet named "Tier 55 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier56} of yellow carpet named "Tier 56 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier57} of lime carpet named "Tier 57 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier58} of green carpet named "Tier 58 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier59} of cyan carpet named "Tier 59 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier60} of light blue carpet named "Tier 60 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier61} of blue carpet named "Tier 61 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier62} of purple carpet named "Tier 62 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier63} of magenta carpet named "Tier 63 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_tier64} of pink carpet named "Tier 64 Drop" with lore "&r&6&lGenerator Drop" from {_i}
+	remove {_ultimate} of gold nugget named "&c&l&k|| &r&6&lUltimate Drop &r&c&l&k||" with lore "&r&6&lGenerator Drop" from {_i}
+	# Give the player money
+	set {_totalItems} to {_tier1} + {_tier2} + {_tier3} + {_tier4} + {_tier5} + {_tier6} + {_tier7} + {_tier8} + {_tier9} + {_tier10} + {_tier11} + {_tier12} + {_tier13} + {_tier14} + {_tier15} + {_tier16} + {_tier17} + {_tier18} + {_tier19} + {_tier20} + {_tier21} + {_tier22} + {_tier23} + {_tier24} + {_tier25} + {_tier26} + {_tier27} + {_tier28} + {_tier29} + {_tier30} + {_tier31} + {_tier32} + {_tier33} + {_tier34} + {_tier35} + {_tier36} + {_tier37} + {_tier38} + {_tier39} + {_tier40} + {_tier41} + {_tier42} + {_tier43} + {_tier44} + {_tier45} + {_tier46} + {_tier47} + {_tier48} + {_tier49} + {_tier50} + {_tier51} + {_tier52} + {_tier53} + {_tier54} + {_tier55} + {_tier56} + {_tier57} + {_tier58} + {_tier59} + {_tier60} + {_tier61} + {_tier62} + {_tier63} + {_tier64} + {_ultimate}
+	set {_total} to ({_tier1} * 2) + ({_tier2} * 4) + ({_tier3} * 6) + ({_tier4} * 8) + ({_tier5} * 10) + ({_tier6} * 12) + ({_tier7} * 14) + ({_tier8} * 16) + ({_tier9} * 18) + ({_tier10} * 20) + ({_tier11} * 22) + ({_tier12} * 24) + ({_tier13} * 26) + ({_tier14} * 28) + ({_tier15} * 30) + ({_tier16} * 32) + ({_tier17} * 36) + ({_tier18} * 40) + ({_tier19} * 44) + ({_tier20} * 48) + ({_tier21} * 52) + ({_tier22} * 56) + ({_tier23} * 60) + ({_tier24} * 64) + ({_tier25} * 68) + ({_tier26} * 72) + ({_tier27} * 76) + ({_tier28} * 80) + ({_tier29} * 84) + ({_tier30} * 88) + ({_tier31} * 92) + ({_tier32} * 96) + ({_tier33} * 102) + ({_tier34} * 108) + ({_tier35} * 114) + ({_tier36} * 120) + ({_tier37} * 126) + ({_tier38} * 132) + ({_tier39} * 138) + ({_tier40} * 144) + ({_tier41} * 150) + ({_tier42} * 156) + ({_tier43} * 162) + ({_tier44} * 168) + ({_tier45} * 174) + ({_tier46} * 180) + ({_tier47} * 186) + ({_tier48} * 192) + ({_tier49} * 200) + ({_tier50} * 208) + ({_tier51} * 216) + ({_tier52} * 224) + ({_tier53} * 232) + ({_tier54} * 240) + ({_tier55} * 248) + ({_tier56} * 256) + ({_tier57} * 264) + ({_tier58} * 272) + ({_tier59} * 280) + ({_tier60} * 288) + ({_tier61} * 296) + ({_tier62} * 304) + ({_tier63} * 312) + ({_tier64} * 320) + ({_ultimate} * 8000)
+	set {_actualTotal} to ({_total} * {multiplier::%{_p}'s uuid%})
+	add {_actualTotal} to {_p}'s balance
+	send "&r[&6&lWired&r&3Gens&r] You sold &2%{_totalItems}%&r items for &2%{_actualTotal}%&r coins!" to {_p}
+	# Add the number of items sold to the total number of items sold in the server
+	add {_totalItems} to {globalItemsSold}
+	
+function giveSellWand(p: player):
+	give {_p} blaze rod named "&r&6Sellwand" with the lore "&r", "&r&6When right clicked on a chest, sells all items inside"
+	
+on right click on chest:
+	if player's held item is blaze rod named "&r&6Sellwand" with the lore "&r", "&r&6When right clicked on a chest, sells all items inside":
+		cancel event
+		if player is trusted in plot at player's location:
+			sellItems(event-block's inventory, player)
+		else:
+			send "&r&cYou can only use a sellwand on a chest in your own plot!" to player

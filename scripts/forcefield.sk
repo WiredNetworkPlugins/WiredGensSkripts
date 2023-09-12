@@ -1,0 +1,11 @@
+command /forcefield:
+  permission: wirednetwork.forcefield
+  executable by: players
+  trigger:
+    give light gray dye of mending 1 named "&7Forcefield" to player
+
+on right click with light gray dye:
+  if name of tool of player is "&7Forcefield":
+    make player execute command "//hsphere slime_block 10"
+    wait 5 second
+    make player execute command "//undo"

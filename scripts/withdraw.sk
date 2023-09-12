@@ -1,0 +1,27 @@
+command /withdraw <number>:
+	permission: wirednetwork.withdraw
+	permission message: &cYou don't have permission to use this command.
+	executable by: player
+	trigger:
+		if arg-1 < 0:
+			send "&cYou can't withdraw a negative number!" to player
+		else:	
+			if player can hold 1 diamond sword:
+				if player's balance >= arg-1:
+					give player paper named "&r&6&lBanknote &r&3(Right Click)" with the lore "&r&6Amount: &f%arg-1%", "&r&6From: &f%player%"
+					if arg-1 < 1:
+						send "&rI'm not sure why you want this, but whatever." to player
+					remove arg-1 from player's balance
+				else:
+					send "&cYou don't have enough money for this!" to player
+			else:
+				send "&cYour inventory is full!"
+			
+on rightclick with paper:
+	if event-item's name contains "Banknote":
+		set {_l::*} to split line 1 of lore of item at " " 
+		if {_l::2} is set:
+			send "&r[&r&6&lWired&r&3Gens&r] $%{_l::2}% was added to your balance!" to player
+			send "%player% redeemed a banknote for $%{_l::2}%" to console
+			execute console command "/eco give %player% %{_l::2}%"
+			remove 1 of tool from tool

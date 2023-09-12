@@ -1,0 +1,13 @@
+command /primedtnt:
+  permission: wirednetwork.primedtnt
+  executable by: players
+  trigger:
+    give tnt named "&cPrimed TNT" to player
+
+
+
+
+on place of tnt:
+  if name of tool of player is "&cPrimed TNT":
+    cancel event
+    spawn a primed tnt at event-block

@@ -1,0 +1,8 @@
+options:
+	killreward: 100
+
+on death of player:
+	if attacker is player:
+		add {@killreward} to {tokens::%attacker's uuid%}
+		wait 2 ticks
+		send "&cYou killed %victim%&c! &a+{@killreward} tokens" to attacker

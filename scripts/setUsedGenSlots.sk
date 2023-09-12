@@ -1,0 +1,15 @@
+command /setusedgenslots <offlineplayer> <number>:
+	permission: wirednetwork.setusedgenslots
+	permission message: &cYou don't have permission to use this command.
+	trigger:
+		send "%arg-1% had %{generator::max::%arg-1's uuid%}% used gen slots"
+		set {generator::max::%arg-1's uuid%} to arg-2
+		send "%arg-1% now has %{generator::max::%arg-1's uuid%}% used gen slots" to player
+		
+command /removeusedgenslots <offlineplayer> <number>:
+	permission: wirednetwork.removeusedgenslots
+	permission message: &cYou don't have permission to use this command.
+	trigger:
+		send "%arg-1% had %{generator::max::%arg-1's uuid%}% used gen slots"
+		remove arg-2 from {generator::max::%arg-1's uuid%}
+		send "%arg-1% now has %{generator::max::%arg-1's uuid%}% used gen slots" to player

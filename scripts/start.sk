@@ -1,0 +1,14 @@
+command /start:
+	permission: skript.genstart
+	description: Start your journey with generators!
+	executable by: players
+	trigger:
+		make console execute command "/mv tp %player% S1Plots"
+		wait 2 seconds
+		make player execute command "/p auto"
+		loop 3 times:
+			getGen("Tier1", player)
+		make console execute command "/minecraft:give %player% diamond_pickaxe{Unbreakable:1b}"
+		make console execute command "/minecraft:give %player% diamond_shovel{Unbreakable:1b}"
+		make console execute command "/minecraft:give %player% diamond_axe{Unbreakable:1b}"
+		make console execute command "/lp user %player% permission set skript.genstart false"

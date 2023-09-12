@@ -1,0 +1,83 @@
+options:
+	coal: 10000
+	iron: 20000
+	gold: 40000
+	diamond: 100000
+	netherite_coins: 1000000
+	netherite_tokens: 20000
+
+command /ranks:
+	permission: wirednetwork.buyranks
+	permission message: No permission.
+	executable by: player
+	trigger:
+		ranksGUI(player)
+
+function ranksGUI(p: player):
+	set {_gui} to chest inventory with 1 rows named "&6&lWired&r&3Gens &rRanks"
+	set slot (numbers between 0 and 9) of {_gui} to gray stained glass pane named " "
+	set slot 0 of {_gui} to coal named "&rCoal Rank (&a${@coal}&r)"
+	set slot 1 of {_gui} to iron ingot named "&rIron Rank (&a${@iron}&r)"
+	set slot 2 of {_gui} to gold ingot named "&rGold Rank (&a${@gold}&r)"
+	set slot 3 of {_gui} to diamond named "&rDiamond Rank (&a${@diamond}&r)"
+	set slot 4 of {_gui} to netherite ingot named "&rNetherite Rank (&a${@netherite_coins} and {@netherite_tokens} tokens&r)"
+	open {_gui} to {_p}
+
+on inventory click:
+	name of event-inventory is "&6&lWired&r&3Gens &rRanks"
+	cancel event
+	event-inventory is not player's inventory
+	if clicked slot is 0:
+		if player has permission "wirednetwork.buyranks.coal":
+			if player's balance >= {@coal}:
+				remove {@coal} from player's balance
+				execute console command "/lp user %player% promote default_ranks"
+				send "&aSuccessfully bought Coal rank!" to player
+			else:
+				send "&cYou don't have enough money!"
+		else:
+			send "&cYou must have the previous rank to buy this!" to player
+	else if clicked slot is 1:
+		if player has permission "wirednetwork.buyranks.iron":
+			if player's balance >= {@iron}:
+				remove {@iron} from player's balance
+				execute console command "/lp user %player% promote default_ranks"
+				send "&aSuccessfully bought Iron rank!" to player
+			else:
+				send "&cYou don't have enough money!"
+		else:
+			send "&cYou must have the previous rank to buy this!" to player
+	else if clicked slot is 2:
+		if player has permission "wirednetwork.buyranks.gold":
+			if player's balance >= {@gold}:
+				remove {@gold} from player's balance
+				execute console command "/lp user %player% promote default_ranks"
+				send "&aSuccessfully bought Gold rank!" to player
+			else:
+				send "&cYou don't have enough money!"
+		else:
+			send "&cYou must have the previous rank to buy this!" to player
+	else if clicked slot is 3:
+		if player has permission "wirednetwork.buyranks.diamond":
+			if player's balance >= {@diamond}:
+				remove {@diamond} from player's balance
+				execute console command "/lp user %player% promote default_ranks"
+				send "&aSuccessfully bought Diamond rank!" to player
+			else:
+				send "&cYou don't have enough money!"
+		else:
+			send "&cYou must have the previous rank to buy this!" to player
+	else if clicked slot is 4:
+		if player has permission "wirednetwork.buyranks.netherite":
+			if player's balance >= {@netherite_coins}:
+				if {tokens::%player's uuid%} >= {@netherite_tokens}:
+					remove {@netherite_coins} from player's balance
+					remove {@netherite_tokens} from {tokens::%player's uuid%}
+					execute console command "/lp user %player% promote default_ranks"
+					send "&aSuccessfully bought Netherite rank!" to player
+				else:
+					send "&cYou don't have enough tokens!"
+			else:
+				send "&cYou don't have enough money!"
+		else:
+			send "&cYou must have the previous rank to buy this!" to player
